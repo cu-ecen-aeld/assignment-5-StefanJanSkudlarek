@@ -18,6 +18,7 @@ exec > >(tee -i -a "$logfile") 2> >(tee -i -a "$logfile" >&2)
 
 echo "Running test with user $(whoami)"
 
+
 set +e
 
 # If there's a configuration for the assignment number, use this to look for
@@ -25,6 +26,7 @@ set +e
 if [ -f conf/assignment.txt ]; then
     # This is just one example of how you could find an associated assignment
     assignment=`cat conf/assignment.txt`
+    echo "this is assignmet ${assignment}"
     if [ -f ./assignment-autotest/test/${assignment}/assignment-test.sh ]; then
         echo "Executing assignment test script"
         ./assignment-autotest/test/${assignment}/assignment-test.sh $test_dir
